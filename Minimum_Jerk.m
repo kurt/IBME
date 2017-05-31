@@ -20,7 +20,7 @@ i=1;
 time = 0:0.1:2;
 
 %Creating position/velocity/acceleration vectors for minimum jerk profile
-while i<22; %time to take a step
+while i<length(hip); %time to take a step
     position(i) = (a1*time(i)^3 + a2*time(i)^4 + a3*time(i)^5);
     velocity(i) = (3*a1*time(i)^2 + 4*a2*time(i)^3 + 5*a3*time(i)^4);
     acceleration(i) = (6*a1*time(i) + 12*a2*time(i)^2 + 20*a3*time(i)^3);
@@ -66,7 +66,7 @@ i=1;
 
 %% Lopping through to create the leg motion
 figure
-while i<22;
+while i<length(hip);
 %%Plotting the vectors to create the leg
 Thigh1 = [0, 530 + 285];
 Thigh2 = [530*sind(hip(i)), 530+285-530*cosd(hip(i))];
@@ -101,7 +101,7 @@ xlim([-500 500]);
 hold off
 pause(0.1);
 i = i+1;
-if i==22;
+if i==length(hip);
     i=1;
 end
 end
